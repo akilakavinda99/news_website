@@ -7,6 +7,7 @@ const cors = require("cors");
 
 // Import the user routes
 const userRoutes = require("./routes/user.routes");
+const testRoutes = require("./routes/serverTest.routes");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/", userRoutes);
+app.use("/test", testRoutes);
 
 const URL = process.env.AUTH_MONGO_URL;
 
@@ -32,7 +34,6 @@ mongoose.connect(URL, {
 const connection = mongoose.connection;
 
 connection.once("open", () => {
-  checkMongoConnection(true);
   console.log("Mongodb connection success!");
 });
 
