@@ -1,0 +1,43 @@
+# name: Article Management Server
+
+# on:
+#   push:
+#     branches: [master]
+#     paths: article_management_server/** #workflow will only wokr when this folder have changes
+#   pull_request:
+#     branches: [master]
+#     paths: article_management_server/**
+
+# jobs:
+#   article-management-server:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 14
+
+#       - name: Start Node.js server
+#         working-directory: user_authentication_server
+#         env:
+#           AUTH_MONGO_URL: ${{ secrets.AUTH_MONGO_URL }}
+#         run: |
+#           npm ci
+#           npm run build &
+
+#   deploy-to-vercel:
+#     needs: run-auth-server # waits till the previous job is done
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: amondnet/vercel-action@v20 #deploy
+#         with:
+#           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+#           github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
+#           vercel-args: "--prod" #Optional
+#           vercel-org-id: ${{ secrets.AM_ORG_ID}} #Required
+#           vercel-project-id: ${{ secrets.AM_PROJECT_ID}} #Required
