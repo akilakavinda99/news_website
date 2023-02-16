@@ -30,7 +30,7 @@ jobs:
           npm run build &
 
   deploy-to-vercel:
-    needs: run-auth-server # waits till the previous job is done
+    needs: article-management-server # waits till the previous job is done
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
