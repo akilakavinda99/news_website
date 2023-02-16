@@ -5,7 +5,7 @@ async function createArticleController(req, res) {
   // accessing the data through the body
   const { articleTitle, articleImage, articleBody, userId } = req.body;
   try {
-    // uploading the image to cloudinary takes time so using async await
+    // uploading the image to cloudinary takes time, so using async await
     var articleImageUrl = await imageUpload(articleImage);
   } catch (error) {
     return res.status(500).send({
